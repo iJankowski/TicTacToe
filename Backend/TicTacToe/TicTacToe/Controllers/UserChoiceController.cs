@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using TicTacToe.Models;
+using TicTacToe.Services;
 
 namespace TicTacToe.Controllers;
 
@@ -8,9 +10,16 @@ namespace TicTacToe.Controllers;
 
 public class UserChoiceController : ControllerBase
 {
-    [HttpPost("move")]
-    public IActionResult PlayerMove()
+    public UserChoiceController(GameService gameService)
     {
-        return Ok();
+        _gameService = gameService;
+    }
+
+    private readonly GameService _gameService;
+    [HttpPost("move")]
+    public IActionResult PlayerMove([FromBody]MoveRequest moveRequest)
+    {
+        var game = _gameService.PlayerMove(moveRequest.GameCode, moveRequest.BoardPlace);
+        return Ok(game);
     }
 }

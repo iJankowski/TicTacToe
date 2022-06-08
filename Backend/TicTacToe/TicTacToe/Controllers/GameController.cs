@@ -34,9 +34,10 @@ public class GameController : ControllerBase
         return Ok(games);
     }
 
-    [HttpGet("status")]
-    public IActionResult GameStatus()
+    [HttpGet("status/{gameCode}")]
+    public IActionResult GameStatus([FromRoute]string gameCode)
     {
-        return Ok("OK");
+        var game = _gameService.StatusOfGame(gameCode);
+        return Ok(game);
     }
 }

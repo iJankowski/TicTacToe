@@ -4,4 +4,5 @@ public class User
 {
     public string UserNickname { get; set; }
     public string Password { get; set; }
+    public bool isGuest { get; set; }
 }

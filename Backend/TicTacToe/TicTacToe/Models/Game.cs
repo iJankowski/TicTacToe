@@ -7,12 +7,15 @@ public class Game
     public Game(bool gamePrivacy)
     {
         GameCode = RandomString(5);
-        isPrivate = gamePrivacy;
+        IsPrivate = gamePrivacy;
+        TicTacToeGame = Enumerable.Range(0, 9).Select(x => TicTacToeStatus.Blank).ToList();
     }
+
     public List<TicTacToeStatus> TicTacToeGame { get; set; }
     public string GameCode { get; set; }
     public static readonly Random Random = new Random();
-    public bool isPrivate { get; set; }
+    public bool IsPrivate { get; set; }
+    public bool Queue { get; set; }
 
     private static string RandomString(int length)
     {

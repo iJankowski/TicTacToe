@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using TicTacToe.Models;
 using TicTacToe.Services;
 
 namespace TicTacToe.Controllers;
@@ -15,16 +16,30 @@ public class GameController : ControllerBase
     private readonly GameService _gameService;
     
     [HttpPost("new")]
-    public IActionResult NewGame()
+    public IActionResult NewGame(string playerNickname)
     {
-        var game = _gameService.NewGame(false);
+        var game = _gameService.NewGame(false, playerNickname);
         return Ok(game);
     }
     [HttpPost("newPrivate")]
-    public IActionResult NewGamePrivate()
+    public IActionResult NewGamePrivate(string playerNickname)
     {
-        var game = _gameService.NewGame(true);
+        var game = _gameService.NewGame(true,playerNickname);
         return Ok(game);
+    }
+
+    [HttpPost("joinGame")]
+    public IActionResult JoinGame(string nickname, string gameCode)
+    {
+        _gameService.JoinGame(nickname, gameCode);
+        return Ok($"Hello {nickname}, welcome in game {gameCode}");
+    }
+
+    [HttpPost("deleteGame/{gameCode}")]
+    public IActionResult DeleteGame([FromRoute] string gameCode)
+    {
+        _gameService.ExterminateGame(gameCode);
+        return Ok("Game deleted");
     }
 
     [HttpGet("games")]

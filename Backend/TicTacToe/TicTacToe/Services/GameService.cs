@@ -12,11 +12,25 @@ public class GameService
 
     private readonly MemoryService _memoryService;
 
-    public Game NewGame(bool isPrivate)
+    public Game NewGame(bool isPrivate, string nickname)
     {
-        var game = new Game(isPrivate);
+        var user = _memoryService.Users.Where(x => x.UserNickname == nickname).FirstOrDefault();
+        var game = new Game(isPrivate, user);
         _memoryService.Games.Add(game);
         return game;
+    }
+
+    public void JoinGame(string nickname, string gameCode)
+    {
+        var user = _memoryService.Users.Where(x => x.UserNickname == nickname).FirstOrDefault();
+        var game = _memoryService.Games.Where(x => x.GameCode == gameCode).FirstOrDefault();
+        game.SecondPlayer = user;
+    }
+
+    public void ExterminateGame(string gameCode)
+    {
+        var game = _memoryService.Games.Where(x => x.GameCode == gameCode).FirstOrDefault();
+            _memoryService.Games.Remove(game);
     }
 
     public List<Game> ListOfGames()

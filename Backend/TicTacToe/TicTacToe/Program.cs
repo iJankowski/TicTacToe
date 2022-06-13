@@ -20,6 +20,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<MemoryService>();
 builder.Services.AddScoped<GameService>();
+builder.Services.AddScoped<UserService>();
 
 var app = builder.Build();
 

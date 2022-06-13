@@ -2,7 +2,11 @@ namespace TicTacToe.Models;
 
 public class User
 {
+    public User(string userNickname)
+    {
+        UserNickname = userNickname;
+        Player = Guid.NewGuid();
+    }
     public string UserNickname { get; set; }
-    public string Password { get; set; }
-    public bool isGuest { get; set; }
+    public Guid Player { get; set; }
 }

@@ -3,7 +3,7 @@ import {Component} from "react";
 class CreateGame extends Component{
     render() {
         return(
-        <button className="createGame">CreateGame</button>
+        <button className="createGame">Create Game</button>
     )
     }
 }

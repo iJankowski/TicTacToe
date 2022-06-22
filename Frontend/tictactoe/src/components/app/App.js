@@ -1,16 +1,19 @@
 import './App.css';
-import ApiTest from "../apiTest/apiTest";
+import Header from "../Header/Header";
+import GameBar from "../Gamebar/GameBar";
+import Game from "../Game/Game";
+import GamesList from "../GamesList/GamesList";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <ApiTest/>
-      </header>
-    </div>
+      <div className="center">
+        <div className="App">
+            <Header/>
+            <GameBar/>
+            <Game/>
+            <GamesList/>
+        </div>
+      </div>
   );
 }
 

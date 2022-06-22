@@ -1,0 +1,13 @@
+.navBar{
+    border: 1px black solid;
+    flex-basis: 65%;
+    display: flex;
+    justify-content: end;
+}
+.buttons{
+    width: 200px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.createGame{
+}

@@ -1,20 +1,14 @@
 import {Component} from "react";
-import CreateGame from "./CreateGame";
-import JoinGame from "./JoinGame";
-import './navBar.css';
-import Logo from "./Logo";
+import LogoIcon from "./LogoIcon";
 
-class NavBar extends Component{
+class NavBar extends Component {
     render() {
-        return(
-            <div className="navBar">
-                <Logo/>
-                <div className="buttons">
-                    <CreateGame/>
-                    <JoinGame/>
-                </div>
+        return (
+            <div className="flex px-5">
+                <LogoIcon/>
             </div>
         )
     }
 }
+
 export default NavBar;

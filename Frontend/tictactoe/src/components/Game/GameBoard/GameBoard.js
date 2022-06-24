@@ -1,10 +1,25 @@
 import {Component} from "react";
 
 class GameBoard extends Component{
-    render() {
-        return(
-            <div>GameBoard</div>
-        )
+    state = {
+        fields: [
+            [null,null,null],
+            [null,null,null],
+            [null,null,null]]
+    }
+    handleClick = (x,y) => {
+        console.log({x,y})
+    }
+    render () {
+        return (
+            <div>
+                {this.state.fields.map((x,i) => {
+                    return <div className="border-t-2 border-solid first-of-type:border-none">{x.map((y,j) =>{
+                        return <span className="inline-block p-8 border-l-2 border-solid first-of-type:border-none hover:bg-slate-900" onClick={()=>this.handleClick(i,j)}>{JSON.stringify(y)}</span>
+                    })}</div>
+                })}
+            </div>
+        );
     }
 }
 export default GameBoard;

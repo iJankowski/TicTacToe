@@ -1,19 +1,18 @@
-import './App.css';
 import Header from "../Header/Header";
 import GameBar from "../Gamebar/GameBar";
 import Game from "../Game/Game";
 import GamesList from "../GamesList/GamesList";
+import "../../index.css"
 
 function App() {
   return (
-      <div className="center">
-        <div className="App">
+        <div>
             <Header/>
             <GameBar/>
             <Game/>
             <GamesList/>
         </div>
-      </div>
+
   );
 }
 

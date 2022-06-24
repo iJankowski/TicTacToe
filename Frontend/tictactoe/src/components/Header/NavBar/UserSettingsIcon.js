@@ -3,7 +3,8 @@ import {Component} from "react";
 class UserSettingsIcon extends Component {
     render() {
         return (
-            <svg className="userSettingsIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+            <div className="navBarItemSpacing cursor-pointer buttonHover buttonSchema">
+            <svg className="w-8 h-8 block nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
                 <path className="userSettingsIconPath" d="M425.1 482.6c-2.303-1.25-4.572-2.559-6.809-3.93l-7.818
                 4.493c-6.002 3.504-12.83 5.352-19.75 5.352c-10.71
                 0-21.13-4.492-28.97-12.75c-18.41-20.09-32.29-44.15-40.22-69.9c-5.352-18.06
@@ -31,6 +32,7 @@ class UserSettingsIcon extends Component {
                 373.3zM496 400.5c-26.75 0-48.5-21.75-48.5-48.5s21.75-48.5 48.5-48.5c26.75 0
                 48.5 21.75 48.5 48.5S522.8 400.5 496 400.5z"/>
             </svg>
+        </div>
         );
     }
 }

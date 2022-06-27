@@ -9,9 +9,9 @@ function App() {
         <div>
             <Header/>
             <GameBar/>
-            <div className="flex-col lg:flex-row flex">
-            <Game/>
-            <GamesList/>
+            <div className="flex flex-wrap-reverse md:flex-nowrap justify-center">
+                <GamesList/>
+                <Game/>
             </div>
         </div>
 

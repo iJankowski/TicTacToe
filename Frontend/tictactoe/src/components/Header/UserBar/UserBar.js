@@ -2,6 +2,7 @@ import {Component} from "react";
 import UserSettingsIcon from "../NavBar/UserSettingsIcon";
 import CreateGame from "../NavBar/CreateGame";
 import JoinGame from "../NavBar/JoinGame";
+import MenuIcon from '@mui/icons-material/Menu';
 
 class UserBar extends Component{
     render() {
@@ -13,8 +14,11 @@ class UserBar extends Component{
                 <div className="hidden sm:inline-flex">
                     <div className="navBarItemSpacing buttonHover buttonSchema">Login</div>
                     <div className="navBarItemSpacing buttonHover buttonSchema">Register</div>
-                </div>
                     <UserSettingsIcon/>
+                </div>
+                <div className="navBarItemSpacing buttonHover buttonSchema sm:hidden">
+                    <MenuIcon/>
+                </div>
             </div>
         )
     }

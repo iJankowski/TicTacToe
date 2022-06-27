@@ -14,10 +14,12 @@ class GameBoard extends Component{
         return (
             <div>
                 {this.state.fields.map((x,i) => {
-                    return <div className="border-t-2 border-solid first-of-type:border-none">{x.map((y,j) =>{
-                        return <span className="inline-block p-8 border-l-2 border-solid first-of-type:border-none hover:bg-slate-900" onClick={()=>this.handleClick(i,j)}>{JSON.stringify(y)}</span>
-                    })}</div>
-                })}
+                    return <div className="border-2 border-dashed border-slate-400">
+                    <div className="border-t-2 border-solid first-of-type:border-none">{x.map((y,j) =>{
+                        return <span className="inline-block  p-3.5 sm:p-5 border-l-2 border-solid first-of-type:border-none hover:bg-slate-900"
+                                     onClick={()=>this.handleClick(i,j)}>{JSON.stringify(y)}</span>
+                    })}</div></div>
+                    })}
             </div>
         );
     }

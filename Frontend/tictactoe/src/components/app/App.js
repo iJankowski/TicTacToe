@@ -9,8 +9,10 @@ function App() {
         <div>
             <Header/>
             <GameBar/>
+            <div className="flex-col lg:flex-row flex">
             <Game/>
             <GamesList/>
+            </div>
         </div>
 
   );

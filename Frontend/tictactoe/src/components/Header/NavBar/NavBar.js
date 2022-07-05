@@ -1,5 +1,5 @@
 import {Component} from "react";
-import LogoIcon from "./LogoIcon";
+import LogoIcon from "../UserBar/LogoIcon";
 
 class NavBar extends Component {
     render() {

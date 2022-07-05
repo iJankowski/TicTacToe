@@ -16,15 +16,15 @@ public class GameController : ControllerBase
     private readonly GameService _gameService;
     
     [HttpPost("new")]
-    public IActionResult NewGame(string playerNickname)
+    public IActionResult NewGame(string nickname)
     {
-        var game = _gameService.NewGame(false, playerNickname);
+        var game = _gameService.NewGame(false, nickname);
         return Ok(game);
     }
     [HttpPost("newPrivate")]
-    public IActionResult NewGamePrivate(string playerNickname)
+    public IActionResult NewGamePrivate(string nickname)
     {
-        var game = _gameService.NewGame(true,playerNickname);
+        var game = _gameService.NewGame(true,nickname);
         return Ok(game);
     }
 

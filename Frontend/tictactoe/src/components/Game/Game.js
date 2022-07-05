@@ -1,6 +1,6 @@
 import {Component} from "react";
 import GameBoard from "./GameBoard/GameBoard";
-import GameCode from "../Header/NavBar/GameCode";
+import GameCode from "../Header/UserBar/GameCode";
 
 class Game extends Component{
     render() {

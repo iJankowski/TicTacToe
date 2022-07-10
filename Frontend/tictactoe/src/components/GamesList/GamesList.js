@@ -10,7 +10,7 @@ class GamesList extends Component{
         axios.get("https://localhost:7122/game/games").then((gameList) =>{
             this.setState({gamesList:gameList.data})
         }).catch(err => {
-            console.error(err)
+            console.log("Backend is offline")
         })
     }
     componentDidMount() {

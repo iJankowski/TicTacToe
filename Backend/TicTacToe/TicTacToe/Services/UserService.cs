@@ -13,7 +13,14 @@ public class UserService
 
     public User NewUser(string nickname)
     {
-        var user = new User(nickname);
+        var user = new User(nickname, false);
+        _memoryService.Users.Add(user);
+        return user;
+    }
+
+    public User RegisterUser(string nickname, string email, string password)
+    {
+        var user = new User(nickname, true, email ,password);
         _memoryService.Users.Add(user);
         return user;
     }

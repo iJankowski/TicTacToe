@@ -21,4 +21,11 @@ public class UserController : ControllerBase
         var user = _userService.NewUser(nickname);
         return Ok(user);
     }
+
+    [HttpPost("register")]
+    public IActionResult RegisterUser(string nickname, string email, string password)
+    {
+        var user = _userService.RegisterUser(nickname, email, password);
+        return Ok(user);
+    }
 }

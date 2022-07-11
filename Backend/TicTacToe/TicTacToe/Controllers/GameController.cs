@@ -28,7 +28,7 @@ public class GameController : ControllerBase
         return Ok(game);
     }
 
-    [HttpPost("joinGame")]
+    [HttpPost("join")]
     public IActionResult JoinGame(string nickname, string gameCode)
     {
         _gameService.JoinGame(nickname, gameCode);

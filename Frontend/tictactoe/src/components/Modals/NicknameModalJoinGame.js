@@ -11,20 +11,18 @@ class NicknameModalJoinGame extends Component {
   };
 
   handleJoiningGame = () => {
-    this.props.setIsNickNameSet(() => {
-      if (this.props.nickName !== "" && this.props.isNickNameSet === true) {
-        createAndJoin(this.props.nickName, "join", this.state.gameCode)
-          .then((x) => {
-            console.log(x.data);
-            this.props.showModal();
-          })
-          .catch((x) => {
-            console.log(x.message);
-          });
-      } else {
-        alert("Nickname is not set");
-      }
-    });
+    if (this.props.nickname !== "") {
+      createAndJoin(this.props.nickname, "join", this.state.gameCode)
+        .then((x) => {
+          console.log(x.data);
+          this.props.showModal();
+        })
+        .catch((x) => {
+          console.log(x.message);
+        });
+    } else {
+      alert("Nickname is not set");
+    }
   };
   render() {
     return (
@@ -41,27 +39,19 @@ class NicknameModalJoinGame extends Component {
             <CloseIcon />
           </div>
           <div>
-            {this.props.isNickNameSet === false ? (
-              <div>What is your nickname?</div>
-            ) : null}
-            {this.props.isNickNameSet === false ? (
-              <input
-                className="mt-2 bg-slate-800 block"
-                onChange={this.props.setNickName}
-                value={this.props.nickName}
-              />
-            ) : null}
             <div>What is game code?</div>
             <input
               className="mt-2 bg-slate-800 block"
               onChange={this.setGameCode}
               value={this.state.gameCode}
             />
-            <div
-              className="flex justify-end mt-2 buttonHover buttonSchema"
-              onClick={this.handleJoiningGame}
-            >
-              Submit
+            <div className="flex justify-end">
+              <div
+                className="buttonHover buttonSchema mt-1 p-2"
+                onClick={this.handleJoiningGame}
+              >
+                Submit
+              </div>
             </div>
           </div>
         </div>

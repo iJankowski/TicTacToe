@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const NicknameModal = (props) => {
   const [nickname, setNickname] = useState("");
@@ -6,7 +7,16 @@ const NicknameModal = (props) => {
     setNickname(e.target.value);
   };
   const handleNicknameSave = () => {
-    localStorage.setItem("nickname", nickname);
+    axios
+      .post(`https://localhost:7122/User/new?nickname=${nickname}`)
+      .then((response) => {
+        localStorage.setItem("nickname", response.data.userNickname);
+        localStorage.setItem("userId", response.data.userId);
+        props.setGameNickname(response.data.userNickname);
+      })
+      .catch((error) => {
+        alert("Unable to create a new user.");
+      });
   };
 
   return (

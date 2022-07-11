@@ -21,7 +21,7 @@ function App() {
     }
     if (typeof params.invite !== "undefined" && params.invite !== "") {
       setLoading(true);
-      createAndJoin("Ira", "join", "ABCXME")
+      createAndJoin(nickname, "join", "ABCXME")
         .then((game) => {
           setLoading(false);
         })
@@ -42,8 +42,13 @@ function App() {
         </div>
       ) : (
         <>
-          {nickname === "" && <NicknameModal modal={true} />}
-          <Header />
+          {nickname === "" && (
+            <NicknameModal
+              modal={nickname === ""}
+              setGameNickname={setNickname}
+            />
+          )}
+          <Header nickname={nickname} />
           <GameBar />
           <div className="flex flex-wrap-reverse md:flex-nowrap justify-center">
             <GamesList />

@@ -1,16 +1,23 @@
 import { Component } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { createAndJoin } from "../Header/UserBar/CreateAndJoin";
+import { GameContext } from "../../context";
 
 class NicknameModalCreateGame extends Component {
+  static contextType = GameContext;
   handleCreateGame = (isGamePrivate) => {
-    if (this.props.nickname !== "") {
+    if (this.context.gameState.nickname !== "") {
       createAndJoin(
-        this.props.nickname,
+        this.context.gameState.nickname,
         isGamePrivate === false ? "new" : "newPrivate"
       )
         .then((x) => {
           console.log(x.data);
+          this.context.setGameState({
+            ...this.context.gameState,
+            gameCode: x.data.gameCode,
+            game: x.data,
+          });
           this.props.showModal();
         })
         .catch((x) => {

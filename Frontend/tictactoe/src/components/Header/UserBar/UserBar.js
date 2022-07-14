@@ -4,8 +4,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import NicknameModalCreateGame from "../../Modals/NicknameModalCreateGame";
 import NicknameModalJoinGame from "../../Modals/NicknameModalJoinGame";
 import Button from "../../Common/Button";
+import { GameContext } from "../../../context";
 
 class UserBar extends Component {
+  static contextType = GameContext;
   state = {
     showCreate: false,
     showJoin: false,
@@ -16,6 +18,7 @@ class UserBar extends Component {
   toggleJoinModal = () => {
     this.setState({ showJoin: !this.state.showJoin });
   };
+
   render() {
     return (
       <div className="flex items-center lg:text-xl">
@@ -23,19 +26,17 @@ class UserBar extends Component {
         <NicknameModalCreateGame
           modal={this.state.showCreate}
           showModal={this.toggleCreateModal}
-          nickname={this.props.nickname}
         />
         <Button onClick={this.toggleJoinModal} text={"Join Game"} />
         <NicknameModalJoinGame
           modal={this.state.showJoin}
           showModal={this.toggleJoinModal}
-          nickname={this.props.nickname}
         />
         <div className="border-l-indigo-200 border-l border-dashed py-10"></div>
         <div className="flex hidden sm:inline-flex items-center">
-          {this.props.nickname !== "" ? (
+          {this.context.gameState.nickname !== undefined ? (
             <div className="navBarItemSpacing buttonHover buttonSchema">
-              {this.props.nickname}
+              {this.context.gameState.nickname}
             </div>
           ) : (
             <div className="navBarItemSpacing buttonHover buttonSchema">
@@ -54,4 +55,5 @@ class UserBar extends Component {
     );
   }
 }
+
 export default UserBar;

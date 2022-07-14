@@ -1,8 +1,10 @@
 import { Component } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { createAndJoin } from "../Header/UserBar/CreateAndJoin";
+import { GameContext } from "../../context";
 
 class NicknameModalJoinGame extends Component {
+  static contextType = GameContext;
   state = {
     gameCode: "",
   };
@@ -11,10 +13,19 @@ class NicknameModalJoinGame extends Component {
   };
 
   handleJoiningGame = () => {
-    if (this.props.nickname !== "") {
-      createAndJoin(this.props.nickname, "join", this.state.gameCode)
+    if (this.context.gameState.nickname !== "") {
+      createAndJoin(
+        this.context.gameState.nickname,
+        "join",
+        this.state.gameCode
+      )
         .then((x) => {
           console.log(x.data);
+          this.context.setGameState({
+            ...this.context.gameState,
+            gameCode: x.data.gameCode,
+            game: x.data,
+          });
           this.props.showModal();
         })
         .catch((x) => {

@@ -6,23 +6,33 @@ import "../../index.css";
 import { createAndJoin } from "../Header/UserBar/CreateAndJoin";
 import { useEffect, useState } from "react";
 import NicknameModal from "../Modals/NicknameModal";
+import { GameContext } from "../../context";
+import axios from "axios";
 
 function App() {
   const urlSearchParams = new URLSearchParams(window.location.search);
   const params = Object.fromEntries(urlSearchParams.entries());
   const [loading, setLoading] = useState(false);
-  const [nickname, setNickname] = useState("");
+  const [gameState, setGameState] = useState({});
+
+  const UpdateGameStatus = () => {
+    axios
+      .get(`https://localhost:7122/Game/status/${gameState.gameCode}`)
+      .then((x) => {
+        setGameState({ ...gameState, game: x.data });
+      });
+  };
 
   //hook
   useEffect(() => {
     const nickname = localStorage.getItem("nickname");
     if (nickname !== null) {
-      setNickname(nickname);
+      setGameState({ ...gameState, nickname: nickname });
     }
     if (typeof params.invite !== "undefined" && params.invite !== "") {
       setLoading(true);
-      createAndJoin(nickname, "join", "ABCXME")
-        .then((game) => {
+      createAndJoin(nickname, "join", params.invite)
+        .then(() => {
           setLoading(false);
         })
         .catch((error) => {
@@ -30,33 +40,37 @@ function App() {
           setLoading(false);
         });
     }
-  }, [params.invite]);
-
+  }, []);
+  useEffect(() => {
+    if (gameState.gameCode !== "" && gameState.nickname !== undefined) {
+      const interval = setInterval(UpdateGameStatus, 1000);
+      return () => {
+        clearInterval(interval);
+      };
+    }
+  }, [gameState.gameCode]);
   return (
-    <div>
-      {loading ? (
-        <div className="flex justify-center">
-          <div className="text-3xl bg-slate-800 m-10 p-10  rounded-2xl">
-            Loading... please wait
+    <GameContext.Provider value={{ gameState, setGameState }}>
+      <div>
+        {loading ? (
+          <div className="flex justify-center">
+            <div className="text-3xl bg-slate-800 m-10 p-10  rounded-2xl">
+              Loading... please wait
+            </div>
           </div>
-        </div>
-      ) : (
-        <>
-          {nickname === "" && (
-            <NicknameModal
-              modal={nickname === ""}
-              setGameNickname={setNickname}
-            />
-          )}
-          <Header nickname={nickname} />
-          <GameBar />
-          <div className="flex flex-wrap-reverse md:flex-nowrap justify-center">
-            <GamesList />
-            <Game />
-          </div>
-        </>
-      )}
-    </div>
+        ) : (
+          <>
+            {gameState.nickname === undefined && <NicknameModal />}
+            <Header />
+            <GameBar />
+            <div className="flex flex-wrap-reverse md:flex-nowrap justify-center">
+              <GamesList />
+              <Game />
+            </div>
+          </>
+        )}
+      </div>
+    </GameContext.Provider>
   );
 }
 

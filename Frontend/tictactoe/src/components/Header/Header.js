@@ -7,7 +7,7 @@ class Header extends Component {
     return (
       <div className="flex justify-between items-center border-b-indigo-200 border-b">
         <NavBar />
-        <UserBar nickname={this.props.nickname} />
+        <UserBar />
       </div>
     );
   }

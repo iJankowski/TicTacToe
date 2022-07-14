@@ -18,10 +18,16 @@ public class UserService
         return user;
     }
 
-    public User RegisterUser(string nickname, string email, string password)
+    public List<User> AllUsers()
     {
-        var user = new User(nickname, true, email ,password);
-        _memoryService.Users.Add(user);
-        return user;
+        return _memoryService.Users;
+    }
+
+    public User? GetUser(Guid guid)
+    {
+        return _memoryService.Users
+            .Where(user => user.UserId == guid)
+            .ToList()
+            .FirstOrDefault();
     }
 }

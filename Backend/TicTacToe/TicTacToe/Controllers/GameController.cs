@@ -31,8 +31,8 @@ public class GameController : ControllerBase
     [HttpPost("join")]
     public IActionResult JoinGame(string nickname, string gameCode)
     {
-        _gameService.JoinGame(nickname, gameCode);
-        return Ok($"Hello {nickname}, welcome in game {gameCode}");
+        var game = _gameService.JoinGame(nickname, gameCode);
+        return Ok(game);
     }
 
     [HttpPost("deleteGame/{gameCode}")]

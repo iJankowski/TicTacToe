@@ -20,11 +20,12 @@ public class GameService
         return game;
     }
 
-    public void JoinGame(string nickname, string gameCode)
+    public Game JoinGame(string nickname, string gameCode)
     {
         var user = _memoryService.Users.Where(x => x.UserNickname == nickname).FirstOrDefault();
         var game = _memoryService.Games.Where(x => x.GameCode == gameCode).FirstOrDefault();
         game.SecondPlayer = user;
+        return game;
     }
 
     public void ExterminateGame(string gameCode)

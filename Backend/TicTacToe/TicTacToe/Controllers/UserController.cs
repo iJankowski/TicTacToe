@@ -22,10 +22,9 @@ public class UserController : ControllerBase
         return Ok(user);
     }
 
-    [HttpPost("register")]
-    public IActionResult RegisterUser(string nickname, string email, string password)
+    [HttpPost("all")]
+    public IActionResult AllUsers()
     {
-        var user = _userService.RegisterUser(nickname, email, password);
-        return Ok(user);
+        return Ok(_userService.AllUsers());
     }
 }

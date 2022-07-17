@@ -3,17 +3,16 @@ using TicTacToe.Services;
 
 namespace TicTacToe.Controllers;
 
-
 [ApiController]
 [Route("[controller]")]
 public class UserController : ControllerBase
 {
+    private readonly UserService _userService;
+
     public UserController(UserService userService)
     {
         _userService = userService;
     }
-
-    private readonly UserService _userService;
 
     [HttpPost("new")]
     public IActionResult NewUser(string nickname)
@@ -26,5 +25,11 @@ public class UserController : ControllerBase
     public IActionResult AllUsers()
     {
         return Ok(_userService.AllUsers());
+    }
+
+    [HttpGet("userGet")]
+    public IActionResult GetUserById(Guid userId)
+    {
+        return Ok(_userService.GetUser(userId));
     }
 }

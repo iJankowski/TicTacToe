@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using TicTacToe.Models;
 using TicTacToe.Services;
 
 namespace TicTacToe.Controllers;
@@ -8,24 +7,35 @@ namespace TicTacToe.Controllers;
 [Route("[controller]")]
 public class GameController : ControllerBase
 {
+    private readonly GameService _gameService;
+
     public GameController(GameService gameService)
     {
         _gameService = gameService;
     }
 
-    private readonly GameService _gameService;
-    
     [HttpPost("new")]
     public IActionResult NewGame(string nickname)
     {
         var game = _gameService.NewGame(false, nickname);
-        return Ok(game);
+        if (game != null)
+        {
+            return Ok(game);
+        }
+
+        return BadRequest("User with that nickname does not exist");
     }
+
     [HttpPost("newPrivate")]
     public IActionResult NewGamePrivate(string nickname)
     {
-        var game = _gameService.NewGame(true,nickname);
-        return Ok(game);
+        var game = _gameService.NewGame(true, nickname);
+        if (game != null)
+        {
+            return Ok(game);
+        }
+
+        return BadRequest("User with that nickname does not exist");
     }
 
     [HttpPost("join")]
@@ -55,15 +65,16 @@ public class GameController : ControllerBase
         var games = _gameService.ListOfGames();
         return Ok(games);
     }
+
     [HttpGet("yourGames")]
-    public IActionResult YourGames()
+    public IActionResult YourGames(Guid playerId)
     {
-        var games = _gameService.ListOfGames();
+        var games = _gameService.ListOfUserGames(playerId);
         return Ok(games);
     }
 
     [HttpGet("status/{gameCode}")]
-    public IActionResult GameStatus([FromRoute]string gameCode)
+    public IActionResult GameStatus([FromRoute] string gameCode)
     {
         var game = _gameService.StatusOfGame(gameCode);
         return Ok(game);

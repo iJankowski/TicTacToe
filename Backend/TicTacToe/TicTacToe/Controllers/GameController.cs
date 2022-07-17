@@ -35,6 +35,13 @@ public class GameController : ControllerBase
         return Ok(game);
     }
 
+    [HttpPost("next")]
+    public IActionResult NextGame(string gameCode)
+    {
+        var game = _gameService.NextGame(gameCode);
+        return Ok(game);
+    }
+
     [HttpPost("deleteGame/{gameCode}")]
     public IActionResult DeleteGame([FromRoute] string gameCode)
     {
@@ -44,6 +51,12 @@ public class GameController : ControllerBase
 
     [HttpGet("games")]
     public IActionResult Games()
+    {
+        var games = _gameService.ListOfGames();
+        return Ok(games);
+    }
+    [HttpGet("yourGames")]
+    public IActionResult YourGames()
     {
         var games = _gameService.ListOfGames();
         return Ok(games);

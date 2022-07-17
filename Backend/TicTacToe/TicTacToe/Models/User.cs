@@ -11,7 +11,7 @@ public class User
         CreatedAt = DateTime.UtcNow;
     }
     
-    public string UserNickname { get;  }
+    public string UserNickname { get; }
     public Guid UserId { get; }
     public DateTime CreatedAt { get; }
     

@@ -4,22 +4,23 @@ namespace TicTacToe.Models;
 
 public class Game
 {
-    public Game(bool gamePrivacy, User firstPlayer)
+    public Game(bool gamePrivacy, User creator)
     {
         GameCode = RandomString(5);
         IsPrivate = gamePrivacy;
-        TicTacToeGame = Enumerable.Range(0, 9).Select(x => TicTacToeStatus.Blank).ToList();
+        TicTacToeGame = Enumerable.Range(0, 3).Select(x => Enumerable.Range(0,3).Select(y => TicTacToeStatus.Blank).ToList()).ToList();
         State = GameState.WaitingForSecondPlayer;
         DateCreated = DateTime.UtcNow;
-        FirstPlayer = firstPlayer;
+        Creator = creator;
     }
 
-    public List<TicTacToeStatus> TicTacToeGame { get; set; }
+    public List<List<TicTacToeStatus>> TicTacToeGame { get; set; }
     public string GameCode { get; set; }
     private static readonly Random Random = new Random();
     public bool IsPrivate { get; set; }
     public bool Queue { get; set; }
     public GameState State { get; set; }
+    public User Creator { get; set; }
     public User FirstPlayer { get; set; }
     public User SecondPlayer { get; set; }
     public DateTime DateCreated { get; set; }

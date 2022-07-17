@@ -19,7 +19,7 @@ public class UserChoiceController : ControllerBase
     [HttpPost("move")]
     public IActionResult PlayerMove([FromBody]MoveRequest moveRequest)
     {
-        var game = _gameService.PlayerMove(moveRequest.GameCode, moveRequest.BoardPlace);
+        var game = _gameService.PlayerMove(moveRequest.GameCode, moveRequest.BoardPlaceX, moveRequest.BoardPlaceY);
         return Ok(game);
     }
 }

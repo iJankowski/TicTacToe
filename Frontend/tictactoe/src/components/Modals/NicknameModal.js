@@ -9,10 +9,11 @@ const NicknameModal = (props) => {
     localStorage.setItem("nickname", nickname);
   };
 
+  //todo: change to: block : hidden later
   return (
     <div
       className={`${
-        props.modal ? "block" : "hidden"
+        props.modal ? "hidden" : "hidden"
       } fixed top-0 left-0 bg-black/50 w-full h-full flex justify-center items-center`}
     >
       <div className="rounded-2xl p-10 pb-2 bg-slate-900 relative">

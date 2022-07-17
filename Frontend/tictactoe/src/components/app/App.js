@@ -1,4 +1,3 @@
-import Header from "../Header/Header";
 import GameBar from "../Gamebar/GameBar";
 import Game from "../Game/Game";
 import GamesList from "../GamesList/GamesList";
@@ -6,6 +5,8 @@ import "../../index.css";
 import { createAndJoin } from "../Header/UserBar/CreateAndJoin";
 import { useEffect, useState } from "react";
 import NicknameModal from "../Modals/NicknameModal";
+import Header from "../../containers/header/header";
+import Footer from "../Footer/footer";
 
 function App() {
   const urlSearchParams = new URLSearchParams(window.location.search);
@@ -33,7 +34,7 @@ function App() {
   }, [params.invite]);
 
   return (
-    <div>
+    <div className="bg-gradient-to-b from-gradientlight to-gradientDark min-h-screen">
       {loading ? (
         <div className="flex justify-center">
           <div className="text-3xl bg-slate-800 m-10 p-10  rounded-2xl">
@@ -44,11 +45,12 @@ function App() {
         <>
           {nickname === "" && <NicknameModal modal={true} />}
           <Header />
-          <GameBar />
-          <div className="flex flex-wrap-reverse md:flex-nowrap justify-center">
+
+          {/*<div className="flex flex-wrap-reverse md:flex-nowrap justify-center">
             <GamesList />
-            <Game />
-          </div>
+          </div>*/}
+          <Game />
+          <Footer />
         </>
       )}
     </div>

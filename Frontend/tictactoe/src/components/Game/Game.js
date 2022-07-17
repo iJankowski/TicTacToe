@@ -1,18 +1,17 @@
-import {Component} from "react";
+import { Component } from "react";
 import GameBoard from "./GameBoard/GameBoard";
-import GameCode from "../Header/UserBar/GameCode";
+import Wrapper from "../../containers/common/wrapper";
+import GameBar from "../Gamebar/GameBar";
 
-class Game extends Component{
-    render() {
-        return(
-            <div className="flex justify-center max-w-2xl w-full">
-                <div className="flex flex-col w-full max-w-2xl rounded-2xl p-10 pt-2 m-10 bg-slate-800 items-center">
-                <GameCode/>
-                <GameBoard/>
-                </div>
-            </div>
-        )
-    }
+class Game extends Component {
+  render() {
+    return (
+      <Wrapper className="py-10">
+        <GameBar />
+        <GameBoard />
+      </Wrapper>
+    );
+  }
 }
 
 export default Game;

@@ -1,8 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="350" height="350" viewBox="0 0 350 350">
     <defs>
         <linearGradient id="gradient">
-            <stop offset="0%" stop-color="#f390c3" />
-            <stop offset="100%" stop-color="#fefbcc" />
+            <stop offset="0%" stop-color="#f390c3"/>
+            <stop offset="100%" stop-color="#fefbcc"/>
         </linearGradient>
     </defs>
-    <polygon stroke="url(#gradient)" stroke-width="6" fill="none" xmlns="http://www.w3.org/2000/svg" class="cls-1" points="192.68 175 324.66 306.98 306.99 324.67 175 192.68 43.02 324.67 25.34 306.98 157.33 175 25.34 43.01 43.02 25.34 175 157.32 306.99 25.34 324.66 43.01 192.68 175"/></svg>
+    <polygon stroke="url(#gradient)" stroke-width="6" fill="none" xmlns="http://www.w3.org/2000/svg" class="cls-1"
+             points="192.68 175 324.66 306.98 306.99 324.67 175 192.68 43.02 324.67 25.34 306.98 157.33 175 25.34 43.01 43.02 25.34 175 157.32 306.99 25.34 324.66 43.01 192.68 175"/>
+</svg>

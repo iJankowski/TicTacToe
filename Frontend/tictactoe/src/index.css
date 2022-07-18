@@ -3,18 +3,97 @@
 @tailwind utilities;
 
 body {
-    @apply bg-slate-900 text-indigo-50 fill-indigo-50
+  min-width: 350px;
+  font-family: "Comfortaa", cursive;
+  color: white;
+  background-color: #141a24;
 }
 
-.navBarItemSpacing {
-    @apply px-5 py-4
+.blue_shadow {
+  filter: drop-shadow(0 0 5px rgb(75, 200, 204));
 }
 
-.buttonSchema {
-    @apply rounded-2xl cursor-pointer font-bold
+.orange_shadow {
+  filter: drop-shadow(0 0 8px rgb(234, 119, 179));
 }
 
-.buttonHover {
-    @apply hover:bg-slate-800 hover:shadow-md hover:shadow-slate-700
+.board {
+  width: 100%;
 }
 
+.board > .column_0,
+.column_1,
+.column_2 {
+  box-sizing: border-box;
+}
+
+.board > .column_0 > span,
+.column_1 > span,
+.column_2 > span {
+  border: 1px solid #1f2532;
+}
+
+.board > .column_0 > span:nth-child(1) {
+  border-left: none;
+  border-top: none;
+}
+.board > .column_0 > span:nth-child(2) {
+  border-top: none;
+}
+.board > .column_0 > span:nth-child(3) {
+  border-right: none;
+  border-top: none;
+}
+.board > .column_1 > span:nth-child(1) {
+  border-left: none;
+}
+.board > .column_1 > span:nth-child(3) {
+  border-right: none;
+}
+
+.board > .column_2 > span:nth-child(1) {
+  border-left: none;
+  border-bottom: none;
+}
+.board > .column_2 > span:nth-child(2) {
+  border-bottom: none;
+}
+
+.board > .column_2 > span:nth-child(3) {
+  border-right: none;
+  border-bottom: none;
+}
+
+.border_spot {
+  width: 33.3%;
+}
+
+.border_spot:after {
+  content: "";
+  display: block;
+  margin-top: 85.75%;
+}
+
+.font_base {
+  @apply text-base text-tac-100 font-medium;
+}
+.font_player {
+  @apply text-base font-medium;
+}
+
+.font_caption {
+  @apply font-semibold text-sm;
+}
+
+.font_score {
+  @apply font-bold text-3xl;
+}
+
+.text-shadow:hover {
+  text-shadow: 0 0 10px #0eacd9;
+}
+
+.menu_width {
+  max-width: 120px;
+  width: 100%;
+}

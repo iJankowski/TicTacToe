@@ -4,8 +4,8 @@ class UserSettingsIcon extends Component {
     render() {
         return (
             <div className="navBarItemSpacing cursor-pointer buttonHover buttonSchema">
-            <svg className="w-8 h-8 block nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
-                <path className="userSettingsIconPath" d="M425.1 482.6c-2.303-1.25-4.572-2.559-6.809-3.93l-7.818
+                <svg className="w-8 h-8 block nav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                    <path className="userSettingsIconPath" d="M425.1 482.6c-2.303-1.25-4.572-2.559-6.809-3.93l-7.818
                 4.493c-6.002 3.504-12.83 5.352-19.75 5.352c-10.71
                 0-21.13-4.492-28.97-12.75c-18.41-20.09-32.29-44.15-40.22-69.9c-5.352-18.06
                 2.343-36.87 17.83-45.24l8.018-4.669c-.0664-2.621-.0664-5.242
@@ -31,8 +31,8 @@ class UserSettingsIcon extends Component {
                 33.25-57.38c1-3.375-.3751-6.875-3.375-8.5L610.5
                 373.3zM496 400.5c-26.75 0-48.5-21.75-48.5-48.5s21.75-48.5 48.5-48.5c26.75 0
                 48.5 21.75 48.5 48.5S522.8 400.5 496 400.5z"/>
-            </svg>
-        </div>
+                </svg>
+            </div>
         );
     }
 }

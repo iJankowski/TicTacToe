@@ -1,13 +1,13 @@
-import Header from "../Header/Header";
-import GameBar from "../Gamebar/GameBar";
-import Game from "../Game/Game";
-import GamesList from "../GamesList/GamesList";
 import "../../index.css";
 import { createAndJoin } from "../Header/UserBar/CreateAndJoin";
 import { useEffect, useState } from "react";
 import NicknameModal from "../Modals/NicknameModal";
 import { GameContext } from "../../context";
 import axios from "axios";
+import Header from "../../containers/common/header/header";
+import GameBar from "../Gamebar/GameBar";
+import Game from "../Game/Game";
+import Footer from "../../containers/footer/footer";
 
 function App() {
   const urlSearchParams = new URLSearchParams(window.location.search);
@@ -65,22 +65,22 @@ function App() {
   }, [gameState.gameCode]);
   return (
     <GameContext.Provider value={{ gameState, setGameState }}>
-      <div>
+      <div className="bg-gradient-to-b from-gradientlight to-gradientDark min-h-screen">
         {loading ? (
           <div className="flex justify-center">
-            <div className="text-3xl bg-slate-800 m-10 p-10  rounded-2xl">
+            <div className="text-3xl bg-slate-800 m-10 p-10 rounded-2xl">
               Loading... please wait
             </div>
           </div>
         ) : (
           <>
-            {gameState.nickname === undefined && <NicknameModal />}
+            {/*{gameState.nickname === undefined && <NicknameModal />}*/}
             <Header />
-            <GameBar />
+            {/*<GameBar />*/}
             <div className="flex flex-wrap-reverse md:flex-nowrap justify-center">
-              <GamesList />
               <Game />
             </div>
+            <Footer />
           </>
         )}
       </div>

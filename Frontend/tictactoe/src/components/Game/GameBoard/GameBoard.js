@@ -22,29 +22,28 @@ class GameBoard extends Component {
       boardPlaceY: y,
     });
   };
+
   render() {
     return (
-      <div>
-        {this.context.gameState.game?.ticTacToeGame?.map((x, i) => {
+      <div className="bg-tac-500 p-6 board mx-auto rounded-xl max-w-xl border-2 border-tac-400 shadow-lg">
+        {this.state.fields?.map((x, i) => {
           return (
-            <div className="border-2 border-dashed border-slate-400" key={i}>
-              <div className="border-t-2 border-solid first-of-type:border-none">
-                {x.map((y, j) => {
-                  return (
-                    <span
-                      className="inline-block  p-3.5 sm:p-5 border-l-2 border-solid first-of-type:border-none hover:bg-slate-900"
-                      key={`${i}${j}`}
-                      onClick={() => this.handleClick(i, j)}
-                    >
-                      {y === 0 ? undefined : y === 1 ? (
-                        <CloseIcon />
-                      ) : (
-                        <TripOriginIcon />
-                      )}
-                    </span>
-                  );
-                })}
-              </div>
+            <div className={`flex column_${i}`} key={i}>
+              {x.map((y, j) => {
+                return (
+                  <span
+                    className="border_spot"
+                    key={`${i}${j}`}
+                    onClick={() => this.handleClick(i, j)}
+                  >
+                    {y === 0 ? undefined : y === 1 ? (
+                      <CloseIcon />
+                    ) : (
+                      <TripOriginIcon />
+                    )}
+                  </span>
+                );
+              })}
             </div>
           );
         })}
@@ -52,4 +51,5 @@ class GameBoard extends Component {
     );
   }
 }
+
 export default GameBoard;

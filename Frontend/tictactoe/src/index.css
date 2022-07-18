@@ -2,16 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
+body {
     @apply bg-slate-900 text-indigo-50 fill-indigo-50
 }
-.navBarItemSpacing{
+
+.navBarItemSpacing {
     @apply px-5 py-4
 }
-.buttonSchema{
+
+.buttonSchema {
     @apply rounded-2xl cursor-pointer font-bold
 }
-.buttonHover{
+
+.buttonHover {
     @apply hover:bg-slate-800 hover:shadow-md hover:shadow-slate-700
 }
 

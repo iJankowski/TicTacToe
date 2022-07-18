@@ -26,9 +26,23 @@ function App() {
   //hook
   useEffect(() => {
     const nickname = localStorage.getItem("nickname");
-    if (nickname !== null) {
-      setGameState({ ...gameState, nickname: nickname });
+    const userId = localStorage.getItem("userId");
+    if (nickname !== null && userId !== null) {
+      axios
+        .get(`https://localhost:7122/User/userGet?userId=${userId}`)
+        .then((user) => {
+          if (user.data === "") {
+            localStorage.removeItem("nickname");
+            localStorage.removeItem("userId");
+          } else {
+            setGameState({ ...gameState, nickname: nickname });
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
+
     if (typeof params.invite !== "undefined" && params.invite !== "") {
       setLoading(true);
       createAndJoin(nickname, "join", params.invite)

@@ -11,6 +11,7 @@ class GamesList extends Component {
     axios
       .get("https://localhost:7122/game/games")
       .then((gameList) => {
+        //tutaj kubie cos dziala, a mi nie 2;49
         this.setState({ gamesList: gameList.data });
       })
       .catch((err) => {

@@ -6,4 +6,5 @@ public enum GameState
     GameWonByFirstPlayer = 1,
     GameWonBySecondPlayer = 2,
     GameDraw = 3,
+    WaitingForMove = 4
 }

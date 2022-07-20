@@ -1,34 +1,31 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using TicTacToe.Models.enums;
 
 namespace TicTacToe.Models;
 
-public class Game
+public class Game : BaseEntity
 {
     private static readonly Random Random = new();
 
-    public Game(bool gamePrivacy, User creator)
+    public Game()
     {
         GameCode = RandomString(6);
-        IsPrivate = gamePrivacy;
-        TicTacToeGame = Enumerable.Range(0, 3)
-            .Select(x => Enumerable.Range(0, 3).Select(y => TicTacToeStatus.Blank).ToList()).ToList();
         State = GameState.WaitingForSecondPlayer;
         DateCreated = DateTime.UtcNow;
-        Creator = creator;
-        GamesWonByFirstPlayer = 0;
-        GamesWonBySecondPlayer = 0;
     }
 
-    public List<List<TicTacToeStatus>> TicTacToeGame { get; set; }
+    public List<GameMove> GameMoves { get; set; }
+    public List<MovesHistory> HistoryOfMoves { get; set; }
     public string GameCode { get; set; }
     public bool IsPrivate { get; set; }
+    [NotMapped]
+    public bool IsClosed => State != GameState.GameClosed;
     public bool Queue { get; set; }
     public GameState State { get; set; }
-    public User Creator { get; set; }
     public User? FirstPlayer { get; set; }
     public User? SecondPlayer { get; set; }
-    public int GamesWonByFirstPlayer { get; set; }
-    public int GamesWonBySecondPlayer { get; set; }
+    public int GamesWonByOwner { get; set; }
+    public int GamesWonByJoiner { get; set; }
     public DateTime DateCreated { get; set; }
 
     private static string RandomString(int length)
@@ -37,7 +34,4 @@ public class Game
         return new string(Enumerable.Repeat(chars, length)
             .Select(s => s[Random.Next(s.Length)]).ToArray());
     }
-    
-    
-
 }

@@ -1,6 +1,6 @@
 namespace TicTacToe.Models.enums;
 
-public enum TicTacToeStatus
+public enum FieldType
 {
     Blank = 0,
     Circle = 1,

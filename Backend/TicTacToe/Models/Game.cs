@@ -12,6 +12,9 @@ public class Game : BaseEntity
         GameCode = RandomString(6);
         State = GameState.WaitingForSecondPlayer;
         DateCreated = DateTime.UtcNow;
+        HistoryOfMoves = new List<MovesHistory>();
+        GameMoves = new List<GameMove>();
+
     }
 
     public List<GameMove> GameMoves { get; set; }

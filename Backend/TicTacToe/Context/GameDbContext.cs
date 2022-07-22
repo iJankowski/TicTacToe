@@ -14,10 +14,10 @@ public class GameDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
         DbPath = Path.Join(path, "game.db");
     }
 
-    public DbSet<UserSettings> UserSetting { get; set; }
-    public DbSet<Game> Games { get; set; }
-    public DbSet<GameMove> Moves { get; set; }
-    public DbSet<MovesHistory> MovesHistory { get; set; }
+    public virtual DbSet<UserSettings> UserSetting { get; set; }
+    public virtual DbSet<Game> Games { get; set; }
+    public virtual DbSet<GameMove> Moves { get; set; }
+    public virtual DbSet<MovesHistory> MovesHistory { get; set; }
     public string DbPath { get; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)

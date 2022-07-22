@@ -4,7 +4,7 @@
 Simple game created with .NET, REACTJS, EFCore, with identity, sqlite and tailwind.
 
 ## Table of Contents
-- [General info](#general-info)
+- [General info](#general-information)
 - [Technologies Used](#technologies-used)
 - [Features](#features)
 - [Screenshots](#screenshots)

@@ -5,7 +5,7 @@ using TicTacToe.Models.enums;
 
 namespace TicTacToe.Services;
 
-public class GameService
+public class GameService : IGameService
 {
     private readonly GameDbContext _gameDbContext;
 

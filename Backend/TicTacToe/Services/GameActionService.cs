@@ -9,11 +9,11 @@ namespace TicTacToe.Services;
 public class GameActionService
 {
     private readonly GameDbContext _gameDbContext;
-    private readonly GameService _gameService;
+    private readonly IGameService _gameService;
     private readonly UserManager<User> _userManager;
 
 
-    public GameActionService(GameDbContext gameDbContext, GameService gameService, UserManager<User> userManager)
+    public GameActionService(GameDbContext gameDbContext, IGameService gameService, UserManager<User> userManager)
     {
         _gameDbContext = gameDbContext;
         _gameService = gameService;

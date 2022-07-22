@@ -16,7 +16,7 @@ Simple game created with .NET, REACTJS, EFCore, with identity, sqlite and tailwi
 ## General information
  It started as a simple tic-tac-toe game project, but I would love to expand this idea and introduce more games.
 
-The main goal was to carry out a project that would allow me to learn with a mentor many aspects of software development and I can proudly say that it did thought me just how much room there is to grow. Since it started, I've systematized my knowledge of C# and .NET, started using relational databases, and developed REST API. Working with it allowed me to try many things like: sending the user's choice and its handling on the back side, receiving by the second user what the first did, displaying changes on the fly for both sides. I also started working with EntityFramework, and I'm learning the whole idea behind ORM. I am also trying to keep my code neat and clean.
+The main goal was to carry out a project that would allow me to learn with a mentor many aspects of software development and I can proudly say that it did taught me just how much room there is to grow. Since it started, I've systematized my knowledge of C# and .NET, started using relational databases, and developed REST API. Working with it allowed me to try many things like: sending the user's choice and its handling on the back side, receiving by the second user what the first did, displaying changes on the fly for both sides. I also started working with EntityFramework, and I'm learning the whole idea behind ORM. I am also trying to keep my code neat and clean.
 
 I chose the tic-tac-toe game because it also seemed like a good way to try frontend: learning JavaScript, ReactJS, and CSS, and recently I also added Tailwind to help me with styling.
 

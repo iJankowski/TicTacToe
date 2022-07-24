@@ -1,7 +1,7 @@
 <img src="./Frontend/src/assets/x.svg" alt="drawing" style="width:100px;"/><img src="./Frontend/src/assets/o.svg" alt="drawing" style="width:100px;"/><img src="./Frontend/src/assets/x_orange.svg" alt="drawing" style="width:100px;"/><img src="./Frontend/src/assets/o_orange.svg" alt="drawing" style="width:100px;"/>
 
 # TicTacToe - Multiplayer Game
-Simple game created with .NET, REACTJS, EFCore, with Identity, SQLite and Tailwind.
+Simple game created with .Net, ReactJS, EFCore, with Identity, SQLite and Tailwind.
 
 ## Table of Contents
 - [General info](#general-information)

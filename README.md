@@ -51,11 +51,10 @@ This project allows me to pursue my passion and develop myself. At the moment it
 To run this project, install it locally using npm:
 
 ```
-$ cd ../TicTacToe
+$ cd ../Frontend
 $ npm install
 $ npm start
 ```
-
 
 
 ## Usage

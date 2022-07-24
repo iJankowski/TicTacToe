@@ -64,7 +64,7 @@ If u want get by GameCode game for joining, to check game/rematch/close game, u 
 ## Status
 ###  _in progress_ 
 ####
-At this point, Back is almost finished. I have to make more xunit tests, and clean a little bit code, make some features like timer.
+At this point, Back is almost finished. I have to make more xUnit tests, and clean a little bit code, make some features like timer.
 Frontend design is almost finished, but for now, I have to connect it with back.
 
 ## Room for Improvement

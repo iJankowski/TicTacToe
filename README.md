@@ -35,13 +35,13 @@ This project allows me to pursue my passion and develop myself. At the moment it
 - Invite link
 
 #### To Do:
-- Finish frontend
+- Frontend
 - Timer for move
 - Spectators
 - Statistics
 - User avatar
 - Play versus bots
-- Tournament
+- Tournaments
 - More games :)
 
 ## Screenshots
@@ -50,8 +50,8 @@ This project allows me to pursue my passion and develop myself. At the moment it
 ## Setup
 To run this project, install it locally using npm:
 
+For frontend
 ```
-$ cd ../Frontend
 $ npm install
 $ npm start
 ```

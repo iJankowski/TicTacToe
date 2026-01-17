@@ -95,8 +95,9 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-using (var scope = app.Services.CreateScope())
+var seedAdminAsync = async () =>
 {
+    using var scope = app.Services.CreateScope();
     var config = scope.ServiceProvider.GetRequiredService<IConfiguration>();
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
@@ -128,9 +129,11 @@ using (var scope = app.Services.CreateScope())
             await userManager.AddToRoleAsync(adminUser, AdminRole);
         }
     }
-}
+};
+await seedAdminAsync();
 
 app.Run();
+
 
 
 

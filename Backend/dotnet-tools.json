@@ -9,11 +9,5 @@
       ],
       "rollForward": false
     }
-  },
-  "userSecrets": {
-    "Admin": {
-      "UserName": "Admin",
-      "Password": "ChangeMe123!"
-    }
   }
 }

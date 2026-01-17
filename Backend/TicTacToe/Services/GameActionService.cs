@@ -150,3 +150,4 @@ public class GameActionService
     private bool CheckByCoordsFieldType(GameMove move, int x, int y, FieldType fieldType) =>
         move.XCoord == x && move.YCoord == y && move.FieldType == fieldType;
 }
+

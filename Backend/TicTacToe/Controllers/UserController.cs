@@ -35,6 +35,11 @@ public class UserController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> NewUser([FromBody] NewUserRequest newUserRequest)
     {
+        if (string.IsNullOrWhiteSpace(newUserRequest.Username))
+        {
+            return BadRequest();
+        }
+
         var identityResult = await _userManager.CreateAsync(new User()
         {
             UserName = newUserRequest.Username,
@@ -47,6 +52,11 @@ public class UserController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginUserRequest loginUserRequest)
     {
+        if (string.IsNullOrWhiteSpace(loginUserRequest.Username) || string.IsNullOrWhiteSpace(loginUserRequest.Password))
+        {
+            return BadRequest();
+        }
+
         var signInResult = await _signInManager.PasswordSignInAsync(loginUserRequest.Username, loginUserRequest.Password, true, false);
         if (signInResult.Succeeded == false) return BadRequest();
 

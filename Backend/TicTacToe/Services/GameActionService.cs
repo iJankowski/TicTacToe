@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using TicTacToe.Context;
 using TicTacToe.Models;
 using TicTacToe.Models.enums;
@@ -23,9 +22,12 @@ public class GameActionService
     public GameMove? PlayerMove(string gameCode, int xCoord, int yCoord)
     {
         var game = _gameService.GetGameByGameCode(gameCode);
+        if (game == null) return null;
 
         var checkWin = IsWon(gameCode);
-        if (game == null) return null;
+
+        var currentPlayer = game.Queue ? game.FirstPlayer : game.SecondPlayer;
+        if (currentPlayer == null) return null;
 
         var existingMove =
             game.GameMoves.FirstOrDefault(gameMove => gameMove.XCoord == xCoord && gameMove.YCoord == yCoord);
@@ -35,7 +37,7 @@ public class GameActionService
         {
             YCoord = yCoord,
             XCoord = xCoord,
-            UserId = game.Queue ? game.FirstPlayer.Id : game.SecondPlayer.Id,
+            UserId = currentPlayer.Id,
             FieldType = game.Queue ? FieldType.Cross : FieldType.Circle,
             GameId = game.Id,
             DateOfMove = DateTime.UtcNow
@@ -91,7 +93,7 @@ public class GameActionService
         game.HistoryOfMoves.Add(new MovesHistory()
         {
             GameId = game.Id,
-            HistoricalGameMoves = game.GameMoves
+            HistoricalGameMoves = game.GameMoves.ToList()
         });
 
         game.GameMoves.Clear();
@@ -122,7 +124,7 @@ public class GameActionService
     {
         for (var i = 0; i < 3; i++)
         {
-            var moves = game.GameMoves.Where(checkFunc).ToList();
+            var moves = game.GameMoves.Where(move => checkFunc(move, i)).ToList();
             if (moves.Count > 2) return true;
         }
 
@@ -146,5 +148,6 @@ public class GameActionService
     }
 
     private bool CheckByCoordsFieldType(GameMove move, int x, int y, FieldType fieldType) =>
-        move.XCoord == 0 && move.YCoord == 0 && move.FieldType == fieldType;
+        move.XCoord == x && move.YCoord == y && move.FieldType == fieldType;
 }
+

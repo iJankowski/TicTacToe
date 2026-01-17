@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TicTacToe.Models;
+using TicTacToe.Models.Requests;
 using TicTacToe.Services;
 
 namespace TicTacToe.Controllers;
@@ -35,7 +35,12 @@ public class GameController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> NewGame([FromBody] NewGameRequest newGame)
     {
-        var game = await _gameActionService.NewGame(newGame.isPrivate, Guid.Parse((newGame.userId)));
+        if (newGame.UserId == null || newGame.IsPrivate == null)
+        {
+            return BadRequest();
+        }
+
+        var game = await _gameActionService.NewGame(newGame.IsPrivate.Value, newGame.UserId.Value);
         if (game != null) return Ok(game);
 
         return BadRequest();
@@ -44,11 +49,16 @@ public class GameController : ControllerBase
     [HttpPatch("{gameCode}")]
     public IActionResult JoinGame(string gameCode, [FromBody] JoinGameRequest joinGame)
     {
-        var game = _gameActionService.JoinGame(Guid.Parse(joinGame.userId), gameCode);
+        if (joinGame.UserId == null)
+        {
+            return BadRequest();
+        }
+
+        var game = _gameActionService.JoinGame(joinGame.UserId.Value, gameCode);
         return Ok(game);
     }
 
-    [Authorize("admin")]
+    [Authorize("Admin")]
     [HttpDelete("{gameCode}")]
     public IActionResult DeleteGame([FromRoute] string gameCode)
     {

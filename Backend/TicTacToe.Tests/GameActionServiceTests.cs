@@ -12,8 +12,8 @@ namespace TicTacToe.Tests;
 
 public class GameActionServiceTests
 {
-    public GameActionService GameActionService { get; set; }
-    public Mock<IGameService> GameServiceMock { get; set; }
+    public GameActionService GameActionService { get; set; } = null!;
+    public Mock<IGameService> GameServiceMock { get; set; } = null!;
     
     public GameActionServiceTests()
     {
@@ -26,6 +26,8 @@ public class GameActionServiceTests
             GameCode = "TESTX1",
             IsPrivate = true
         });
+
+        GameServiceMock = gameServiceMock;
 
         var store = new Mock<IUserStore<User>>();
         var mgr = new Mock<UserManager<User>>(store.Object, null, null, null, null, null, null, null, null);

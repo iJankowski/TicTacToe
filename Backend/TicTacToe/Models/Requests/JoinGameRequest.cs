@@ -1,6 +1,6 @@
-namespace TicTacToe.Models;
+namespace TicTacToe.Models.Requests;
 
 public class JoinGameRequest
 {
-    public string userId { get; set; }
+    public Guid? UserId { get; set; }
 }

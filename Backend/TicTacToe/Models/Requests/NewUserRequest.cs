@@ -1,6 +1,6 @@
-namespace TicTacToe.Models;
+namespace TicTacToe.Models.Requests;
 
 public class NewUserRequest
 {
-    public string username { get; set; }
+    public string? Username { get; set; }
 }

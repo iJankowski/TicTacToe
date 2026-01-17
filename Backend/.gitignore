@@ -1,5 +1,43 @@
+# Build output
 bin/
 obj/
-/packages/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider/JetBrains
+.idea/
 riderModule.iml
-/_ReSharper.Caches/
+
+# ReSharper
+_ReSharper.Caches/
+
+# NuGet
+*.nupkg
+*.snupkg
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local databases
+*.db
+
+# Local tooling
+.dotnet/
+
+# Session notes
+SESSION_SUMMARY.md
+
+appsettings.Development.json
+appsettings.*.json
+!appsettings.json
+!appsettings.*.Example.json
+

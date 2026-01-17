@@ -38,6 +38,8 @@ public class GameService : IGameService
 
     public List<Game> GetGamesForUser(Guid userId)
     {
-        return _gameDbContext.Games.Where(game => game.FirstPlayer.Id == userId && game.State != GameState.GameClosed).ToList();
+        return _gameDbContext.Games
+            .Where(game => game.FirstPlayer != null && game.FirstPlayer.Id == userId && game.State != GameState.GameClosed)
+            .ToList();
     }
 }

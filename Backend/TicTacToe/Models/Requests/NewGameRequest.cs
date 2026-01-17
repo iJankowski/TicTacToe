@@ -1,7 +1,7 @@
-namespace TicTacToe.Models;
+namespace TicTacToe.Models.Requests;
 
 public class NewGameRequest
 {
-    public string userId { get; set; }
-    public bool isPrivate { get; set; }
+    public string UserId { get; set; }
+    public bool IsPrivate { get; set; }
 }

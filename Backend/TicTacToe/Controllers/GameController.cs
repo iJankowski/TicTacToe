@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TicTacToe.Models;
+using TicTacToe.Models.Requests;
 using TicTacToe.Services;
 
 namespace TicTacToe.Controllers;
@@ -48,7 +48,7 @@ public class GameController : ControllerBase
         return Ok(game);
     }
 
-    [Authorize("admin")]
+    [Authorize("Admin")]
     [HttpDelete("{gameCode}")]
     public IActionResult DeleteGame([FromRoute] string gameCode)
     {

@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using TicTacToe.Models;
+using TicTacToe.Models.Requests;
 using TicTacToe.Services;
 
 namespace TicTacToe.Controllers;
@@ -18,7 +18,7 @@ public class MoveController : ControllerBase
     [HttpPost]
     public IActionResult PlayerMove([FromBody] MoveRequest moveRequest)
     {
-        var game = _gameActionService.PlayerMove(moveRequest.gameCode, moveRequest.xCoord, moveRequest.yCoord);
+        var game = _gameActionService.PlayerMove(moveRequest.GameCode, moveRequest.XCoord, moveRequest.YCoord);
         return Ok(game);
     }
 }
